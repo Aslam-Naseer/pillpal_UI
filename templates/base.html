@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PillPal</title>
+  </head>
+
+  <body>
+    <nav class="main-nav">
+      <h3>user</h3>
+    </nav>
+    <div class="container">{% block content %} {% endblock %}</div>
+  </body>
+
+  <script>
+    buckets = {
+      bucket1: {
+        name: "bucket1",
+        medicines: [
+          {
+            name: "medicine1",
+            time: "time1",
+          },
+          {
+            name: "medicine2",
+            time: "time2",
+          },
+        ],
+      },
+      bucket2: {
+        name: "bucket2",
+        medicines: [
+          {
+            name: "medicine1",
+            time: "time1",
+          },
+          {
+            name: "medicine2",
+            time: "time2",
+          },
+        ],
+      },
+    };
+  </script>
+</html>
