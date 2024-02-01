@@ -1,5 +1,25 @@
 {% extends "base.html" %} {% block content %}
 <div class="main">
   <button class="add-bucket">Add Bucket</button>
+  <br>
+  <h1>Data from Supabase</h1>
+  <br>
+    <ul>
+        {% for item in data_bucket %}
+        <h3>Bucket {{ item.bucket_name}}</h3>
+        <li>Time {{ item.time_to_have }}</li>
+        <br>
+        <ul>
+            {% for item_m in data_medicine %}
+            {% if item_m.bucket == item.id %}
+            <li>Medicine {{ item_m.name }}</li>
+            <li>Description {{ item_m.description }}</li>
+            {% endif %}
+            <br>
+            {% endfor %}
+        </ul>
+        <br><br>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}
