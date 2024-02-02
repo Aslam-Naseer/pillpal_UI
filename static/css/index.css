@@ -41,16 +41,6 @@
   background-color: #00000016;
 }
 
-.add-patient {
-  margin-top: 30px;
-  border: 1px solid #aaa;
-  padding: 7px 16px;
-  cursor: pointer;
-  font-size: 14px;
-
-  align-self: center;
-}
-
 .img-grid {
   padding-top: 50px;
   display: grid;
