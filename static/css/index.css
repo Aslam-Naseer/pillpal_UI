@@ -21,7 +21,6 @@
 
 .img-list {
   flex: 1;
-  border: 2px solid green
 }
 
 .patient_tile {
@@ -53,4 +52,21 @@
 
 .add-patient:hover {
   opacity: 0.85;
+}
+
+.img-grid {
+  padding-top: 35px;
+  display: grid;
+  gap: 35px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.scan-img {
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.img-details {
+  display: flex;
+  justify-content: space-between;
 }
