@@ -35,3 +35,7 @@ body {
   font-size: 22px;
   font-weight: 500;
 }
+
+#myChart {
+  height: 250px;
+}

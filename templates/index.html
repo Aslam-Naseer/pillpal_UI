@@ -1,6 +1,47 @@
 {% extends "base.html" %} {% block content %} {% if patients|length > 0 %}
 <div class="main">
-  <!-- <br>
+  <div class="pat-list">
+    <div>
+      {% for pat in patients %}
+      <button class="patient_tile">{{pat}}</button>
+      {% endfor %}
+    </div>
+    <button class="add-patient">Add patient</button>
+  </div>
+  <div class="img-list">
+    <h2>12345</h2>
+    <div class="canvas-div">
+      <canvas id="myChart"></canvas>
+    </div>
+    <div class="img-grid">
+      {% for img in images %}
+      <div>
+        <img
+          class="scan-img"
+          src="../static/images/brain-scan.jpg"
+          alt="scan"
+        />
+        <ul class="img-details">
+          <li>very mind dementia</li>
+          <li>24-12-2024</li>
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% else %}
+
+<div>
+  <div class="empty-main">
+    <div>No patients found yet. Click to add patient</div>
+    <button class="add-patient">Add patient</button>
+  </div>
+</div>
+
+{% endif %} {% endblock %}
+<!-- <br>
   <h1>Data from Supabase</h1>
   <br>
     <ul>
@@ -20,40 +61,3 @@
         <br><br>
         {% endfor %}
     </ul> -->
-  <div class="pat-list">
-    <div>
-      {% for pat in patients %}
-      <button class="patient_tile">{{pat}}</button>
-      {% endfor %}
-    </div>
-    <button class="add-patient">Add patient</button>
-  </div>
-  <div class="img-list">
-    <h2>Patient name</h2>
-    <div class="img-grid">
-      {% for img in images %}
-      <div>
-        <img
-          class="scan-img"
-          src="../static/images/brain-scan.jpg"
-          alt="scan"
-        />
-        <ul class="img-details">
-          <li>very mind dementia</li>
-          <li>24-12-2024</li>
-        </ul>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</div>
-{% else %}
-
-<div>
-  <div class="empty-main">
-    <div>No patients found yet. Click to add patient</div>
-    <button class="add-patient">Add patient</button>
-  </div>
-</div>
-
-{% endif %} {% endblock %}
