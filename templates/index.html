@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} {% block content %} {% if patients|length > 0 %}
 <div class="main">
   <!-- <br>
   <h1>Data from Supabase</h1>
@@ -47,4 +47,13 @@
     </div>
   </div>
 </div>
-{% endblock %}
+{% else %}
+
+<div>
+  <div class="empty-main">
+    <div>No patients found yet. Click to add patient</div>
+    <button class="add-patient">Add patient</button>
+  </div>
+</div>
+
+{% endif %} {% endblock %}
