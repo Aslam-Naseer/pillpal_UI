@@ -1,9 +1,7 @@
 from flask import Flask, render_template
-import os
+import os,sys
 from dotenv import load_dotenv
-# from supabase import create_client, Client
-
-
+from supabase import create_client, Client
 
 load_dotenv()
 app = Flask(__name__)
@@ -16,15 +14,19 @@ print(key)
 if not url or not key:
     raise ValueError("Supabase credentials not found in .env file")
 
-# supabase = create_client(url, key)
+supabase = create_client(url, key)
 
 @app.route('/')
 def index():
     # Use the 'select' method to retrieve all data from 'buckets'
-    # response_bucket = supabase.table('buckets').select('*').execute()
-    # response_medicine = supabase.table('medicines').select('*').execute()
+    response_patients = supabase.table('patients').select('*').execute()
+    response_scans = supabase.table('scans').select('*').execute()
 
-    patients_list = [12345,22321,31223]
+    patients_list = []
+
+    for patient in response_patients.data:
+        patients_list.append(patient)
+
     images_list = ["a",12,2,3,4,4,4]
 
     labels = [
@@ -37,6 +39,10 @@ def index():
     ]
  
     data = [1,1,2,3,3,4]
+
+
+    print('This is error output', file=sys.stderr)
+    print('This is standard output', file=sys.stdout)
 
     # print("Response", response_bucket.data)
     # print("Response M", response_medicine.data)
