@@ -1,7 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask, request, render_template
 import os,sys
 from dotenv import load_dotenv
 from supabase import create_client, Client
+
+import json
+from types import SimpleNamespace
 
 load_dotenv()
 app = Flask(__name__)
@@ -16,38 +19,28 @@ if not url or not key:
 
 supabase = create_client(url, key)
 
-@app.route('/')
+@app.route('/patients')
 def index():
+    pid = request.args.get('pid')
+
     # Use the 'select' method to retrieve all data from 'buckets'
     response_patients = supabase.table('patients').select('*').execute()
-    response_scans = supabase.table('scans').select('*').execute()
+    response_main = supabase.table('patients').select('*').eq("id",pid).execute().data
+    response_scans = supabase.table('scans').select('*').eq("patient_id",pid).execute()
 
     patients_list = []
 
     for patient in response_patients.data:
         patients_list.append(patient)
 
-    images_list = ["a",12,2,3,4,4,4]
+    images_list = []
 
-    labels = [
-        '12-01-2022',
-        '13-02-2022',
-        '15-04-2022',
-        '30-07-2022',
-        '06-01-2023',
-        '12-02-2023',
-    ]
- 
-    data = [1,1,2,3,3,4]
+    for scan in response_scans.data:
+        images_list.append(scan)
 
+    response_main = response_main[0]
 
-    print('This is error output', file=sys.stderr)
-    print('This is standard output', file=sys.stdout)
-
-    # print("Response", response_bucket.data)
-    # print("Response M", response_medicine.data)
-    # return render_template('index.html', data_bucket=response_bucket.data, data_medicine=response_medicine.data)
-    return render_template('index.html', patients=patients_list, images = images_list, data=data, labels=labels)
+    return render_template('patients.html', patients=patients_list, images = images_list, main=response_main)
 
 if __name__ == '__main__':
     app.run(debug=True)

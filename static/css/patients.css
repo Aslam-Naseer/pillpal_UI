@@ -27,6 +27,10 @@
   flex: 1;
 }
 
+.img-list>h2 {
+  margin-bottom: 20px;
+}
+
 .patient_tile {
   border: none;
   background-color: #0000;

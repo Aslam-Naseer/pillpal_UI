@@ -8,7 +8,8 @@
     </div>
   </div>
   <div class="img-list">
-    <h2>12345</h2>
+    <h3>ID: {{ main.id }}</h3>
+    <h2>{{ main.name }}</h2>
     <div class="canvas-div">
       <canvas id="myChart"></canvas>
     </div>
@@ -17,8 +18,8 @@
       <div>
         <img class="scan-img" src="../static/images/shrek.png" alt="scan" />
         <ul class="img-details">
-          <li>very mind dementia</li>
-          <li>24-12-2024</li>
+          <li>{{ img.output }}</li>
+          <li>{{ img.created_at[0:10] }}</li>
         </ul>
       </div>
       {% endfor %}
