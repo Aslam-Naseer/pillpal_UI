@@ -1,69 +1,66 @@
 .main {
   display: flex;
   justify-content: space-between;
-  padding: 25px;
+  gap: 40px;
 }
 
 .pat-list {
-  width: 300px;
-  margin: 0 30px;
+  width: 220px;
   display: flex;
   gap: 10px;
   flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #aaa;
+  padding-top: 30px;
+  background-color: #f7f7f7;
 }
 
 .pat-list>div {
+  align-self: stretch;
   display: flex;
   flex-direction: column;
-  margin: 35px 0;
-  gap: 10px;
 }
 
 .img-list {
+  padding: 35px 35px 35px 20px;
   flex: 1;
 }
 
 .patient_tile {
-  border: 2px solid #ccc;
+  border: none;
   background-color: #0000;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
+  font-size: 16px;
 
   padding: 10px 16px;
-  transition: background-color 350ms, cursor 350ms;
+  transition: background-color 150ms;
+  cursor: pointer;
 }
 
 .patient_tile:hover {
-  background-color: #00000036;
-  cursor: pointer;
+  background-color: #00000016;
 }
 
 .add-patient {
-  border: none;
+  margin-top: 30px;
+  border: 1px solid #aaa;
   padding: 7px 16px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
 
   align-self: center;
-  justify-self: flex-end;
-  transition: opacity 350ms, cursor 350ms;
-}
-
-.add-patient:hover {
-  opacity: 0.85;
 }
 
 .img-grid {
   padding-top: 35px;
   display: grid;
   gap: 35px;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, 200px);
 }
 
 .scan-img {
   width: 100%;
   aspect-ratio: 1;
+  border-radius: 5px;
 }
 
 .img-details {

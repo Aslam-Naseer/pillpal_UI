@@ -21,7 +21,6 @@
         {% endfor %}
     </ul> -->
   <div class="pat-list">
-    <h2>Patient List</h2>
     <div>
       {% for pat in patients %}
       <button class="patient_tile">{{pat}}</button>
@@ -34,7 +33,11 @@
     <div class="img-grid">
       {% for img in images %}
       <div>
-        <img class="scan-img" src="../static/images/shrek.png" alt="shrek" />
+        <img
+          class="scan-img"
+          src="../static/images/brain-scan.jpg"
+          alt="shrek"
+        />
         <div class="img-details">
           <span>No dementia!</span>
           <span>24-12-2024</span>
