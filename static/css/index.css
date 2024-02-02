@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   gap: 40px;
+  min-height: calc(100vh - 72px);
 }
 
 .pat-list {
@@ -51,7 +52,7 @@
 }
 
 .img-grid {
-  padding-top: 35px;
+  padding-top: 50px;
   display: grid;
   gap: 35px;
   grid-template-columns: repeat(auto-fit, 200px);
@@ -59,11 +60,15 @@
 
 .scan-img {
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 4/3;
+  object-fit: contain;
   border-radius: 5px;
 }
 
 .img-details {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  font-size: 15px;
+  padding-left: 30px;
 }
