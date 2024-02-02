@@ -1,9 +1,17 @@
 .main {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 25px;
+}
+
+.pat-list {
+  width: 25vw;
+  border: 2px solid red
+}
+
+.img-list {
+  flex: 1;
+  border: 2px solid green
 }
 
 .add-bucket {
