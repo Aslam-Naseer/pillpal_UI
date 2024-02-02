@@ -5,8 +5,18 @@
 }
 
 .pat-list {
-  width: 25vw;
-  border: 2px solid red
+  width: 300px;
+  margin: 0 30px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.pat-list>div {
+  display: flex;
+  flex-direction: column;
+  margin: 35px 0;
+  gap: 10px;
 }
 
 .img-list {
@@ -14,17 +24,33 @@
   border: 2px solid green
 }
 
-.add-bucket {
-  border: 1px solid #ccc;
+.patient_tile {
+  border: 2px solid #ccc;
   background-color: #0000;
+  border-radius: 5px;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
 
-  padding: 8px 16px;
+  padding: 10px 16px;
   transition: background-color 350ms, cursor 350ms;
 }
 
-.add-bucket:hover {
-  background-color: #00000016;
+.patient_tile:hover {
+  background-color: #00000036;
   cursor: pointer;
+}
+
+.add-patient {
+  border: none;
+  padding: 7px 16px;
+  cursor: pointer;
+  font-size: 16px;
+
+  align-self: center;
+  justify-self: flex-end;
+  transition: opacity 350ms, cursor 350ms;
+}
+
+.add-patient:hover {
+  opacity: 0.85;
 }

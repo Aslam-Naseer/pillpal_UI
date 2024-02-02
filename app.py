@@ -22,7 +22,7 @@ def index():
     response_bucket = supabase.table('buckets').select('*').execute()
     response_medicine = supabase.table('medicines').select('*').execute()
 
-    patients_list = ["p1","p2","p3"]
+    patients_list = ["pdsda1","p2","p3"]
     images_list = [123,234,345,456,567]
 
     print("Response", response_bucket.data)

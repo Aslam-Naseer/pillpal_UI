@@ -21,9 +21,13 @@
         {% endfor %}
     </ul> -->
   <div class="pat-list">
-    Patient List {% for pat in patients %}
-    <div>{{pat}}</div>
-    {% endfor %}
+    <h2>Patient List</h2>
+    <div>
+      {% for pat in patients %}
+      <button class="patient_tile">{{pat}}</button>
+      {% endfor %}
+    </div>
+    <button class="add-patient">Add patient</button>
   </div>
   <div class="img-list">
     Image list {% for img in images %}
