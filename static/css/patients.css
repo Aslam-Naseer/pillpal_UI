@@ -39,6 +39,8 @@
   padding: 10px 16px;
   transition: background-color 150ms;
   cursor: pointer;
+
+  text-align: center;
 }
 
 .patient_tile:hover {

@@ -8,6 +8,11 @@
   font-family: Outfit, Arial, Helvetica;
 }
 
+a {
+  color: black;
+  text-decoration: none;
+}
+
 body {
   background-color: #eee;
 }
