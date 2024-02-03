@@ -3,9 +3,6 @@ import os,sys
 from dotenv import load_dotenv
 from supabase import create_client, Client
 
-import json
-from types import SimpleNamespace
-
 load_dotenv()
 app = Flask(__name__)
 
@@ -27,8 +24,12 @@ def index():
     return render_template("home.html")
 
 
-@app.route('/patients')
+@app.route('/patients',methods=['GET','POST'])
 def dementia_analyse():
+    if request.method == 'POST':
+        return redirect("/patients?pid=" + request.form['input_pid'])
+
+
     pid = request.args.get('pid')
 
     # Use the 'select' method to retrieve all data from 'buckets'
