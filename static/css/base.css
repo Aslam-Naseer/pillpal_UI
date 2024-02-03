@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap');
 @import url('./patients.css');
-@import url('./empty.css');
+@import url('./home.css');
 
 * {
   margin: 0;
@@ -16,7 +16,6 @@ a {
 body {
   background-color: #eee;
 }
-
 
 .main-nav {
   height: 70px;

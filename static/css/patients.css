@@ -68,3 +68,15 @@
   font-size: 15px;
   padding-left: 30px;
 }
+
+.empty-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 72px);
+}
+
+.empty-main>div {
+  font-size: 22px;
+}

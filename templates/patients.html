@@ -34,26 +34,50 @@
     <div>No scans found yet. Use telegram to add some</div>
   </div>
 
-  {% endif %} {% endblock %}
-</div>
+  {% endif %} {% endblock %} {% block scripts %}
 
-<!-- <br>
-  <h1>Data from Supabase</h1>
-  <br>
-    <ul>
-        {% for item in data_bucket %}
-        <h3>Bucket {{ item.bucket_name}}</h3>
-        <li>Time {{ item.time_to_have }}</li>
-        <br>
-        <ul>
-            {% for item_m in data_medicine %}
-            {% if item_m.bucket == item.id %}
-            <li>Medicine {{ item_m.name }}</li>
-            <li>Description {{ item_m.description }}</li>
-            {% endif %}
-            <br>
-            {% endfor %}
-        </ul>
-        <br><br>
-        {% endfor %}
-    </ul> -->
+  <script>
+
+    const outputCost = str => {
+      console.log(str)
+      if(str === "very mild dementia") return 1
+      if(str === "mild dementia") return 2
+      if(str === "moderate dementia") return 3
+      if(str === "extreme dementia") return 4
+      return 0;
+    }
+
+    const labels = {{ images | tojson }};
+
+    labels.sort((l1,l2) => new Date(l1.created_at) < new Date(l2.created_at))
+
+    const dates = [];
+    labels.forEach((label) => {dates.push(new Date(label.created_at).toLocaleDateString('en-GB'))});
+    console.log(dates)
+
+    const outputs = [];
+    labels.forEach((label) => {outputs.push(outputCost(label.output))})
+
+    const data = {
+        labels: dates,
+        datasets: [{
+            label: 'Level',
+            backgroundColor: 'rgb(7, 70, 219)',
+            borderColor: 'rgb(7, 70, 219)',
+            data: outputs,
+        }]
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: { maintainAspectRatio: false }
+    };
+
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+  </script>
+  {% endblock %}
+</div>

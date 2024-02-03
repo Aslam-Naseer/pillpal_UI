@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 import os,sys
 from dotenv import load_dotenv
 from supabase import create_client, Client
@@ -19,8 +19,16 @@ if not url or not key:
 
 supabase = create_client(url, key)
 
-@app.route('/patients')
+@app.route('/',methods=['GET','POST'])
 def index():
+    if request.method == 'POST':
+        return redirect("/patients?pid=" + request.form['input_pid'])
+    
+    return render_template("home.html")
+
+
+@app.route('/patients')
+def dementia_analyse():
     pid = request.args.get('pid')
 
     # Use the 'select' method to retrieve all data from 'buckets'
