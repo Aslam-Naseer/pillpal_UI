@@ -37,6 +37,9 @@ def dementia_analyse():
     response_main = supabase.table('patients').select('*').eq("id",pid).execute().data
     response_scans = supabase.table('scans').select('*').eq("patient_id",pid).eq("Alzhemeirs",True).execute()
 
+    if len(response_main) < 1:
+            return redirect('error')
+
     patients_list = []
 
     for patient in response_patients.data:
@@ -64,6 +67,9 @@ def tumor_analyse():
     response_main = supabase.table('patients').select('*').eq("id",pid).execute().data
     response_scans = supabase.table('scans').select('*').eq("patient_id",pid).eq("Tumor",True).execute()
 
+    if len(response_main) < 1:
+        return redirect('error')
+
     patients_list = []
 
     for patient in response_patients.data:
@@ -77,6 +83,10 @@ def tumor_analyse():
     response_main = response_main[0]
 
     return render_template('tumor.html',patients=patients_list, images = images_list, main=response_main, scan_type="Tumor")
+
+@app.route('/error')
+def error():
+    return render_template("error.html");
 
 if __name__ == '__main__':
     app.run(debug=True)
