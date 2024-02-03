@@ -2,9 +2,7 @@
 <div class="img-list">
   <h3>ID: {{ main.id }}</h3>
   <h2>{{ main.name }}</h2>
-  <div class="canvas-div">
-    <canvas id="myChart"></canvas>
-  </div>
+
   <div class="img-grid">
     {% for img in images %}
     <div>
@@ -16,7 +14,12 @@
     </div>
     {% endfor %}
   </div>
+
+  <div class="canvas-div">
+    <canvas id="myChart"></canvas>
+  </div>
 </div>
+
 {% endblock %} {% block scripts %}
 <script>
 
@@ -43,7 +46,7 @@
   const data = {
       labels: dates,
       datasets: [{
-          label: 'Level',
+          label: 'Progression overtime',
           backgroundColor: 'rgb(7, 70, 219)',
           borderColor: 'rgb(7, 70, 219)',
           data: outputs,

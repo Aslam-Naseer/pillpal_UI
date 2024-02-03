@@ -1,7 +1,8 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, send_file
 import os,sys
 from dotenv import load_dotenv
 from supabase import create_client, Client
+import json
 
 load_dotenv()
 app = Flask(__name__)
@@ -86,7 +87,27 @@ def tumor_analyse():
 
 @app.route('/error')
 def error():
-    return render_template("error.html");
+    return render_template("error.html")
+@app.route('/download_data/<patient_id>')
+def download_data(patient_id):
+    response = supabase.table('patients').select('*').match({'id': patient_id}).execute()
+    
+
+    for patient in response.data:
+        response_scans = supabase.table('scans').select('*').match({'id': patient['id']}).execute()
+        if response_scans.status_code == 200 and len(response.data) > 0:
+            patient_details = response.data[0]
+            json_data = json.dumps(patient_details, index=2)
+            response = app.response_class(
+                response=json_data,
+                status=200,
+                mimetype='application/json'
+            )
+            response.headers['Content-Disposition'] = f'attachment: filename=p_{patient_id}_details.json'
+            return response
+        else:
+            return "Not found"
+
 
 if __name__ == '__main__':
     app.run(debug=True)

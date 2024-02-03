@@ -16,7 +16,9 @@
     </div>
   </div>
 
-  {% endif %} {% endblock %}
+  {% endif %}
+  <button id="download" class="download">Download JSON</button>
+  {% endblock %}
 </div>
 
 {% block navsearch %}
@@ -26,4 +28,9 @@
     <img class="search-logo" src="../static/images/search.png" alt="search" />
   </button>
 </form>
+<script>
+  document.getElementById("download").addEventListener("click", function () {
+    window.location.href = "/download_data/15";
+  });
+</script>
 {% endblock %}

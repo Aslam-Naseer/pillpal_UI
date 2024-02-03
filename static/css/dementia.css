@@ -2,13 +2,13 @@
   padding-top: 50px;
   display: grid;
   gap: 35px;
-  grid-template-columns: repeat(auto-fit, 200px);
+  grid-template-columns: repeat(auto-fit, 300px);
+  margin-bottom: 50px;
 }
 
 .scan-img {
   width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 5px;
 }
 
@@ -25,6 +25,4 @@
   flex: 1;
 }
 
-.img-list>h2 {
-  margin-bottom: 20px;
-}
+.img-list>h2 {}
