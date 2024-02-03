@@ -35,7 +35,7 @@ def dementia_analyse():
     # Use the 'select' method to retrieve all data from 'buckets'
     response_patients = supabase.table('patients').select('*').execute()
     response_main = supabase.table('patients').select('*').eq("id",pid).execute().data
-    response_scans = supabase.table('scans').select('*').eq("patient_id",pid).execute()
+    response_scans = supabase.table('scans').select('*').eq("patient_id",pid).eq("Alzhemeirs",True).execute()
 
     patients_list = []
 
@@ -62,7 +62,7 @@ def tumor_analyse():
     # Use the 'select' method to retrieve all data from 'buckets'
     response_patients = supabase.table('patients').select('*').execute()
     response_main = supabase.table('patients').select('*').eq("id",pid).execute().data
-    response_scans = supabase.table('scans').select('*').eq("patient_id",pid).execute()
+    response_scans = supabase.table('scans').select('*').eq("patient_id",pid).eq("Tumor",True).execute()
 
     patients_list = []
 
