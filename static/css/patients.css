@@ -1,3 +1,5 @@
+@import url('./dementia.css');
+
 .main {
   display: flex;
   justify-content: space-between;
@@ -22,15 +24,6 @@
   flex-direction: column;
 }
 
-.img-list {
-  padding: 35px 35px 35px 20px;
-  flex: 1;
-}
-
-.img-list>h2 {
-  margin-bottom: 20px;
-}
-
 .patient_tile {
   border: none;
   background-color: #0000;
@@ -45,28 +38,6 @@
 
 .patient_tile:hover {
   background-color: #00000016;
-}
-
-.img-grid {
-  padding-top: 50px;
-  display: grid;
-  gap: 35px;
-  grid-template-columns: repeat(auto-fit, 200px);
-}
-
-.scan-img {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: contain;
-  border-radius: 5px;
-}
-
-.img-details {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-size: 15px;
-  padding-left: 30px;
 }
 
 .empty-main {

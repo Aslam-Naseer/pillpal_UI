@@ -19,15 +19,15 @@ supabase = create_client(url, key)
 @app.route('/',methods=['GET','POST'])
 def index():
     if request.method == 'POST':
-        return redirect("/patients?pid=" + request.form['input_pid'])
+        return redirect("/dementia?pid=" + request.form['input_pid'])
     
     return render_template("home.html")
 
 
-@app.route('/patients',methods=['GET','POST'])
+@app.route('/dementia',methods=['GET','POST'])
 def dementia_analyse():
     if request.method == 'POST':
-        return redirect("/patients?pid=" + request.form['input_pid'])
+        return redirect("/dementia?pid=" + request.form['input_pid'])
 
 
     pid = request.args.get('pid')
@@ -49,7 +49,7 @@ def dementia_analyse():
 
     response_main = response_main[0]
 
-    return render_template('patients.html', patients=patients_list, images = images_list, main=response_main)
+    return render_template('dementia.html', patients=patients_list, images = images_list, main=response_main)
 
 if __name__ == '__main__':
     app.run(debug=True)

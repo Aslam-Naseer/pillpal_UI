@@ -3,32 +3,12 @@
   <div class="pat-list">
     <div>
       {% for pat in patients %}
-      <a class="patient_tile" href="/patients?pid={{ pat.id }}">{{pat.id}}</a>
+      <a class="patient_tile" href="/dementia?pid={{ pat.id }}">{{pat.id}}</a>
       {% endfor %}
     </div>
   </div>
 
-  {% if images|length > 0 %}
-  <div class="img-list">
-    <h3>ID: {{ main.id }}</h3>
-    <h2>{{ main.name }}</h2>
-    <div class="canvas-div">
-      <canvas id="myChart"></canvas>
-    </div>
-    <div class="img-grid">
-      {% for img in images %}
-      <div>
-        <img class="scan-img" src="../static/images/shrek.png" alt="scan" />
-        <ul class="img-details">
-          <li>{{ img.output }}</li>
-          <li>{{ img.created_at[0:10] }}</li>
-        </ul>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-
-  {% else %}
+  {% if images|length > 0 %} {% block sideimages %} {% endblock %} {% else %}
 
   <div class="empty-main">
     <div>No scans found yet. Use telegram to add some</div>
@@ -48,7 +28,6 @@
 <script>
 
   const outputCost = str => {
-    console.log(str)
     if(str === "very mild dementia") return 1
     if(str === "mild dementia") return 2
     if(str === "moderate dementia") return 3
