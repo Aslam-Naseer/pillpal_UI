@@ -2,16 +2,18 @@
 <div class="main">
   <div class="pat-list">
     <div>
-      {% for pat in patients %}
-      <a class="patient_tile" href="/dementia?pid={{ pat.id }}">{{pat.id}}</a>
-      {% endfor %}
+      <a class="patient_tile" href="/dementia?pid={{ main.id }}"> Dementia </a>
+      <a class="patient_tile" href="/tumor?pid={{ main.id }}"> Tumor </a>
     </div>
   </div>
 
   {% if images|length > 0 %} {% block sideimages %} {% endblock %} {% else %}
 
   <div class="empty-main">
-    <div>No scans found yet. Use telegram to add some</div>
+    <div>
+      No {{ scan_type }} scans found yet for {{ main.name }}, id {{ main.id }}.
+      Use telegram to add some
+    </div>
   </div>
 
   {% endif %} {% endblock %}

@@ -49,7 +49,34 @@ def dementia_analyse():
 
     response_main = response_main[0]
 
-    return render_template('dementia.html', patients=patients_list, images = images_list, main=response_main)
+    return render_template('dementia.html', patients=patients_list, images = images_list, main=response_main, scan_type = "Dementia")
+
+@app.route('/tumor',methods=['GET','POST'])
+def tumor_analyse():
+    if request.method == 'POST':
+        return redirect("/tumor?pid=" + request.form['input_pid'])
+
+
+    pid = request.args.get('pid')
+
+    # Use the 'select' method to retrieve all data from 'buckets'
+    response_patients = supabase.table('patients').select('*').execute()
+    response_main = supabase.table('patients').select('*').eq("id",pid).execute().data
+    response_scans = supabase.table('scans').select('*').eq("patient_id",pid).execute()
+
+    patients_list = []
+
+    for patient in response_patients.data:
+        patients_list.append(patient)
+
+    images_list = []
+
+    for scan in response_scans.data:
+        images_list.append(scan)
+
+    response_main = response_main[0]
+
+    return render_template('tumor.html',patients=patients_list, images = images_list, main=response_main, scan_type="Tumor")
 
 if __name__ == '__main__':
     app.run(debug=True)
